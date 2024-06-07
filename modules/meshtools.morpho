@@ -170,7 +170,7 @@ fn PolyhedronMesh(list, faces) {
   // Vertices
   for (x in list) mb.addvertex(x)
   for (f in faces) { // Add midpoints
-    var pt = Matrix(3)
+    var pt = Matrix(dim)
     for (i in f) pt.acc(1, Matrix(list[i]))
     mb.addvertex(pt/f.count())
   }
