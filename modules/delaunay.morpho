@@ -39,7 +39,13 @@ class Delaunay {
 
     self.dim = dim
     self.sscale = 1
-    self.pts = pts.clone()
+    self.pts = []
+    for (p in pts) {
+      if (ismatrix(p)) self.pts.append(p)
+      else if (islist(p)) self.pts.append(Matrix(p))
+      else Error("DlnyInit", "You must supply a list of points as Matrices or Lists.").throw()
+    }
+
     self.n = pts.count()
     self.bbox = self.calcbbox()
     self.eps = 1e-8 // Tolerance for distance calculations
